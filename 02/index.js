@@ -28,8 +28,8 @@ const lut2 = {
 total1 = 0
 total2 = 0
 for (i in input) {
-  total1 = total1 + lut1[input[i].replace(/\s/g,'')];
-  total2 = total2 + lut2[input[i].replace(/\s/g,'')];
+  total1 += lut1[input[i].replace(/\s/g,'')];
+  total2 += lut2[input[i].replace(/\s/g,'')];
 }
 console.log('round1 ',total1)
 console.log('round2 ',total2)
