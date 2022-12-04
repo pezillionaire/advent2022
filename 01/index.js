@@ -5,7 +5,7 @@ const elfSums = []
 for (i in elfList) {
   const elf = (elfList[i].split("\n"));
   for (i in elf) { elf[i] = parseInt(elf[i]); }
-  const sum = elf.reduce((partialSum,a) => partialSum + a,0);
+  const sum = elf.reduce((acc,value) => acc + value,0);
   if (!Number.isNaN(sum)) { elfSums.push(sum); }
 }
 [...Array(3)].forEach((x,i) => {
@@ -15,4 +15,4 @@ for (i in elfList) {
   elfSums.splice(top,1)
 });
 console.log('top 3',topElves);
-console.log('sum',topElves.reduce((partialSum,a) => partialSum + a,0));
+console.log('sum',topElves.reduce((acc,value) => acc + value,0));
