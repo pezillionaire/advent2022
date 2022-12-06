@@ -6,9 +6,8 @@ const packetFinder = (markerLength) => {
   for (let i = 0; i < signal.length; ++i) {
     const marker = [signal[i]];
     for (let j = 1; j < markerLength; ++j) {
-      const match = marker === signal[i + j];
       marker.push(signal[i + j]);
-      if (match || marker.filter(x => x == signal[i + j]).length > 1) { break }
+      if (marker.filter(x => x === signal[i + j]).length > 1) { break }
       else if (marker.length === markerLength) { signalFound = i + j + 1; }
     }
     if (signalFound > 0) { return signalFound };

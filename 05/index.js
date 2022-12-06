@@ -1,7 +1,7 @@
 const fs = require('fs');
-let [cont,inst] = fs.readFileSync('input.txt').toString().split('\n\n',2);
-cont = cont.split('\n').reverse();
-inst = inst.split('\n').filter(x => x)
+let [cont,inst] = fs.readFileSync('input.txt').toString().split(/\r?\n{2}/);
+cont = cont.split(/\r?\n/).reverse();
+inst = inst.split(/\r?\n/).filter(x => x)
 
 const contLength = parseInt((cont.shift().split(' ')).filter(x => x).pop());
 const containers = [...Array(contLength)].map(e => [])

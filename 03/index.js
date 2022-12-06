@@ -1,5 +1,5 @@
 const fs = require('fs');
-const bags = fs.readFileSync('input.txt').toString().split("\n");
+const bags = fs.readFileSync('input.txt').toString().split(/\r?\n/);
 const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const values = {};
 
@@ -28,7 +28,7 @@ bags.forEach(bag => {
   items.push(values[filter[0]])
 })
 const itemSum = items.reduce((acc,value) => acc + value,0);
-console.log(itemSum)
+console.log(itemSum) //A 7824
 
 // sum the common item in each 3 bag group
 const elfGroup = []
@@ -38,4 +38,4 @@ for (let bag = 0; bag < bags.length; bag += 3) {
   elfGroup.push(values[filter[0]]);
 };
 const groupSum = elfGroup.reduce((acc,value) => acc + value,0);
-console.log(groupSum);
+console.log(groupSum); //B 2798

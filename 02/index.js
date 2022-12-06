@@ -1,5 +1,5 @@
 const fs = require('fs');
-const input = fs.readFileSync('input.txt').toString().split("\n");
+const input = fs.readFileSync('input.txt').toString().split(/\r?\n/);
 
 const lut1 = {
   AX: (1 + 3),
@@ -31,5 +31,5 @@ for (i in input) {
   total1 += lut1[input[i].replace(/\s/g,'')];
   total2 += lut2[input[i].replace(/\s/g,'')];
 }
-console.log('round1 ',total1)
-console.log('round2 ',total2)
+console.log('round1 ',total1) //A 10816
+console.log('round2 ',total2) //B 11657

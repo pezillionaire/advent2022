@@ -1,5 +1,5 @@
 const fs = require('fs');
-const assignments = fs.readFileSync('input.txt').toString().split("\n");
+const assignments = fs.readFileSync('input.txt').toString().split(/\r?\n/);
 let contain = 0;
 let overlap = 0;
 for (i in assignments) {
@@ -23,5 +23,5 @@ for (i in assignments) {
     overlap += 1
   }
 }
-console.log('contain',contain);
-console.log('overlap',overlap);
+console.log('contain',contain); // A 509
+console.log('overlap',overlap); // B 870
