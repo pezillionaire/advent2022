@@ -32,7 +32,7 @@ console.log(itemSum)
 
 // sum the common item in each 3 bag group
 const elfGroup = []
-for (let bag = 0; bag < bags.length; bag = bag + 3) {
+for (let bag = 0; bag < bags.length; bag += 3) {
   const group = [[...bags[bag]],[...bags[bag + 1]],[...bags[bag + 2]]];
   const filter = arrayCompare(group);
   elfGroup.push(values[filter[0]]);
