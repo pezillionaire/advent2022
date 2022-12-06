@@ -4,14 +4,7 @@ cont = cont.split('\n').reverse();
 inst = inst.split('\n').filter(x => x)
 
 const contLength = parseInt((cont.shift().split(' ')).filter(x => x).pop());
-let containers = [...Array(contLength)].map(e => [])
-const instructions = []
-
-for (i of inst) {
-  const s = i.split(' ');
-  instructions.push([parseInt(s[1]),parseInt(s[3]),parseInt(s[5])]);
-}
-
+const containers = [...Array(contLength)].map(e => [])
 for (stack of cont) {
   for (let i = 0; i < contLength; ++i) {
     const container = stack[1 + i * 4];
@@ -19,6 +12,12 @@ for (stack of cont) {
       containers[i].push(container);
     }
   }
+}
+
+const instructions = []
+for (i of inst) {
+  const s = i.split(' ');
+  instructions.push([parseInt(s[1]),parseInt(s[3]),parseInt(s[5])]);
 }
 
 for (let i = 0; i < instructions.length; ++i) {
@@ -33,9 +32,10 @@ for (let i = 0; i < instructions.length; ++i) {
 }
 
 let result = '';
-for (stack of containers) {
-  result = result.concat(stack[stack.length - 1])
-}
+containers.forEach(stack => {
+  result = result.concat(stack.pop())
+})
+
 console.log(result);
 //A = WCZTHTMPS
 //B = BLSGJSDTS
