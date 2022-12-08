@@ -2,10 +2,10 @@ const fs = require('fs');
 const assignments = fs.readFileSync('input.txt').toString().split(/\r?\n/);
 let contain = 0;
 let overlap = 0;
-for (i in assignments) {
-  const [first,second] = assignments[i].split(",");
-  const [firstStart,firstEnd] = first.split("-");
-  const [secondStart,secondEnd] = second.split("-");
+for (let i of assignments) {
+  const [first,second] = i.split(/,/);
+  const [firstStart,firstEnd] = first.split(/-/);
+  const [secondStart,secondEnd] = second.split(/-/);
 
   if (parseInt(firstStart) <= parseInt(secondStart) && parseInt(firstEnd) >= parseInt(secondEnd)) {
     contain += 1

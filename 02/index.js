@@ -27,9 +27,9 @@ const lut2 = {
 
 total1 = 0
 total2 = 0
-for (i in input) {
-  total1 += lut1[input[i].replace(/\s/g,'')];
-  total2 += lut2[input[i].replace(/\s/g,'')];
+for (let i of input) {
+  total1 += lut1[i.replace(/\s/g,'')];
+  total2 += lut2[i.replace(/\s/g,'')];
 }
 console.log('round1 ',total1) //A 10816
 console.log('round2 ',total2) //B 11657

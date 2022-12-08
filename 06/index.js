@@ -4,6 +4,7 @@ const signal = fs.readFileSync('input.txt').toString();
 const packetFinder = (markerLength) => {
   let signalFound = 0;
   for (let i = 0; i < signal.length; ++i) {
+    console.log(signal[i]);
     const marker = [signal[i]];
     for (let j = 1; j < markerLength; ++j) {
       marker.push(signal[i + j]);
