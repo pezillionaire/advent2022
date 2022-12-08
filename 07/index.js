@@ -23,14 +23,15 @@ input.forEach((line) => {
     } else if (cmd[1] == 'ls') { // set current directory to nesting
       nest.push(curDir);
     }
-  } else if (parseInt(cmd[0])) { // set files w/ size
+  } else if (parseInt(cmd[0])) { // set file w/ size
     setNestedValue(dirStructure,[...nest,cmd[1]],cmd[0]);
-    for (i of nest) {
-      if (dirSize[i]) {
-        dirSize[i] += parseInt(cmd[0]);
-      } else { dirSize[i] = parseInt(cmd[0]); }
+    for (i in nest) { // roll up file sizes in nested directory
+      const root = nest.filter((_,n) => n < i);
+      if (dirSize[[...root,nest[i]].join('-')]) {
+        dirSize[[...root,nest[i]].join('-')] += parseInt(cmd[0]);
+      } else { dirSize[[...root,nest[i]].join('-')] = parseInt(cmd[0]); }
     };
-  } else if (cmd[0] == 'dir') { // set dirs
+  } else if (cmd[0] == 'dir') { // set directory
     setNestedValue(dirStructure,[...nest,cmd[1]],{});
   }
 });
