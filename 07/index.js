@@ -25,7 +25,7 @@ input.forEach((line) => {
     }
   } else if (parseInt(cmd[0])) { // set file w/ size
     setNestedValue(dirStructure,[...nest,cmd[1]],cmd[0]);
-    for (i in nest) { // roll up file sizes in nested directory
+    for (const i in nest) { // roll up file sizes in nested directory
       const root = nest.filter((_,n) => n < i);
       if (dirSize[[...root,nest[i]].join('-')]) {
         dirSize[[...root,nest[i]].join('-')] += parseInt(cmd[0]);
@@ -36,11 +36,23 @@ input.forEach((line) => {
   }
 });
 
-let result = 0
-for (const [key,value] of Object.entries(dirSize)) {
+let resultA = 0
+for (const [_,value] of Object.entries(dirSize)) {
   if (value <= 100000) {
-    result += value;
+    resultA += value;
   }
 }
-console.log(dirSize);
-console.log('result',result);
+
+let resultB = 0
+for (const [_,value] of Object.entries(dirSize)) {
+  if (value > (30000000 - (70000000 - dirSize['/']))) {
+    if (resultB == 0) {
+      resultB = value
+    } else {
+      resultB = resultB < value ? resultB : value;
+    }
+  }
+}
+
+console.log('result A',resultA);
+console.log('result B',resultB);
